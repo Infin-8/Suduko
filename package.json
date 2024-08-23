@@ -11,9 +11,6 @@
     "client": "cd client && npm start",
     "server": "cd server && npm start",
     "dev": "npm run client & npm run server",
-    "build-client": "cd client && npm run build",
-    "build-server": "cd server && npm run build",
-    "build": "npm run build-client & npm run build-server",
     "cli": "node generator/app.js"
   },
   "author": "Nate",
