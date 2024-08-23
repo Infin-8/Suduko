@@ -1,6 +1,6 @@
 const generateBoard = require('./generateBoard')
 const setDifficulty = require('./setDifficulty')
-const axios = require('../client/node_modules/axios')
+const axios = require('axios')
 const { getCount, addBoard } = require('./store')
 
 module.exports = async ([num, difficulty], emitter) => {
