@@ -65,7 +65,7 @@ function BoardList() {
     if (!boards.length) return <Spinner diff={diff} />
     return (
 
-        <div style={{ ...styles.mainContainer(), display: "flex", flexDirection: "column", height: "100%" }}>
+        <div style={{ ...styles.mainContainer(), display: "flex", flexDirection: "column", height: "100%", alignItems: "center" }}>
 
             {
                 boards.map(({ _id, playing, completed, playingSince, updatedAt, mapped: { render } }, i) => (

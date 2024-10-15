@@ -8,6 +8,13 @@ const styles = {
         justifyContent: "center"
     }),
 
+    boardListContainer: ({
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        alignItems: "center"
+    }),
+
     boardGridContainer: (mini) => ({
         display: "grid",
         gridTemplateColumns: mini ? `repeat(9, 16px)` : `repeat(9, 49px)`,
@@ -16,7 +23,7 @@ const styles = {
         justifyContent: "center",
         alignItems: "center",
         boxShadow: "1px 5px 7px black",
-        margin: "0 29% 0 29.5%"
+        margin: "0 29% 0 29.5%",
     }),
 
     miniBoardContainer: () => ({
@@ -104,6 +111,8 @@ const styles = {
         height: "100vh",
         display: 'flex',
         flexDirection: "column",
+        // justifyContent: "center",
+        // alignItems: "center",
         backgroundColor: "#ccffe6",
         background: "linear-gradient(to bottom, mintcream 0%, #80ffbf 100%)"
     }),
@@ -168,14 +177,15 @@ const styles = {
 
     levelContainer: () => ({
         display: "flex",
-        width: "97.4vw",
-        border: "3px inset whitesmoke",
+        width: "90%",
+        border: ".5px solid black",
         justifyContent: "space-evenly",
+        alignItems: "center",
         margin: "0 0% 2% 0%",
         padding: "1.5%",
         color: "white",
         textShadow: "1px 1px 1px black",
-        boxShadow: "0px 3px 10px black inset",
+        boxShadow: "0px 1px 4px black",
         borderRadius: "10px",
         fontFamily: "rubik"
     }),
