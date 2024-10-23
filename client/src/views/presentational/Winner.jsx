@@ -11,6 +11,7 @@ const Winner = () => {
     { _id, diff } = useParams();
 
   useNavListener();
+  
   useEffect(() => {
     let interval = setInterval(() => {
       nav(`/boards/${diff}`);

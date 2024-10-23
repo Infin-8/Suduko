@@ -117,15 +117,15 @@ function BoardContainer() {
       new RegExp(`^${isFinished}$`).test(isCompleted) ||
       isValid(
         render
-          .map(({ amount }) => (amount ? parseInt(amount) : 0))
+          .map(({ value }) => (value ? parseInt(value) : 0))
           .every((n) => n > 0)
-          ? render.map(({ amount }) => amount)
+          ? render.map(({ value }) => value)
           : []
       )
     )
       setWinner(true);
-    // eslint-disable-next-line
-  }, [isFinished, isCompleted]);
+
+  }, [isFinished, isCompleted, render]);
 
   useEffect(() => {
     Request.updateBoard(_id, render, selected, history)
