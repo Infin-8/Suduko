@@ -9,6 +9,8 @@ import {
   getNumbers,
   checkDuplicates,
   parseData,
+  mapValues,
+  testValues,
 } from "../../util/helpers";
 import timestore from "../../util/timestore";
 import isValid from "../../util/isValid";
@@ -115,16 +117,9 @@ function BoardContainer() {
   useEffect(() => {
     if (
       new RegExp(`^${isFinished}$`).test(isCompleted) ||
-      isValid(
-        render
-          .map(({ value }) => (value ? parseInt(value) : 0))
-          .every((n) => n > 0)
-          ? render.map(({ value }) => value)
-          : []
-      )
+      isValid(compose(mapValues, testValues)(render) ? mapValues(render, false) : [])
     )
       setWinner(true);
-
   }, [isFinished, isCompleted, render]);
 
   useEffect(() => {

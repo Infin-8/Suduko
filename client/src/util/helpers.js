@@ -182,3 +182,8 @@ export const parseData = obj => {
 
     return obj
 }
+
+export const mapValues = (arr, opt = true) => arr.map(({ value }) => value ? opt ? parseInt(value) : value : 0)
+
+
+export const testValues = arr => arr.every(n => n > 0)
