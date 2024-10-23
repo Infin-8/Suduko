@@ -11,6 +11,8 @@ import {
   parseData,
   mapValues,
   testValues,
+  mapString,
+  filterTruthy,
 } from "../../util/helpers";
 import timestore from "../../util/timestore";
 import isValid from "../../util/isValid";
@@ -42,12 +44,7 @@ function BoardContainer() {
   useNavListener();
 
   const isFinished = useMemo(
-      () =>
-        render
-          .map(({ value }) => value)
-          .filter((item) => !!item)
-          .map((item) => item.toString())
-          .join(""),
+      () => compose(filterTruthy, mapString)(mapValues(render, false)).join(""),
       [render]
     ),
     isCompleted = useMemo(() => complete, [complete]);
@@ -117,7 +114,7 @@ function BoardContainer() {
   useEffect(() => {
     if (
       new RegExp(`^${isFinished}$`).test(isCompleted) ||
-      isValid(compose(mapValues, testValues)(render) ? mapValues(render, false) : [])
+      isValid(compose(mapValues, testValues)(render) ? mapValues(render) : [])
     )
       setWinner(true);
   }, [isFinished, isCompleted, render]);

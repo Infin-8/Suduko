@@ -187,3 +187,7 @@ export const mapValues = (arr, opt = true) => arr.map(({ value }) => value ? opt
 
 
 export const testValues = arr => arr.every(n => n > 0)
+
+export const filterTruthy = arr => arr.filter(item => !!item)
+
+export const mapString = arr => arr.map(item => String(item))
