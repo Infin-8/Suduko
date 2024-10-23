@@ -114,7 +114,7 @@ function BoardContainer() {
   useEffect(() => {
     if (
       new RegExp(`^${isFinished}$`).test(isCompleted) ||
-      isValid(compose(mapValues, testValues)(render) ? mapValues(render, false) : [])
+      isValid(compose(mapValues, testValues)(render) ? mapValues(render) : [])
     )
       setWinner(true);
   }, [isFinished, isCompleted, render]);
