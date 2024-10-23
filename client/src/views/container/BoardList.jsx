@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import useNavListener from '../../util/backlistener'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useStore } from '../../store/Provider/Connect'
 import { compose, getCurrentBoard, getPath } from '../../util/helpers'
@@ -21,6 +22,7 @@ function BoardList() {
         { diff } = useParams(),
         { getTimeStamp, clearTime } = timestore
 
+        useNavListener();
 
     useEffect(() => {
 

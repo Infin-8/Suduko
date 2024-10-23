@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import useNavListener from "../../util/backlistener";
 import { useParams } from "react-router-dom";
 import { useStore } from "../../store/Provider/Connect";
 import {
@@ -35,6 +36,8 @@ function BoardContainer() {
     } = getState?.(),
     { _id, diff } = useParams(),
     memoID = useMemo(() => _id, [_id]);
+
+  useNavListener();
 
   const isFinished = useMemo(
       () =>
@@ -121,6 +124,7 @@ function BoardContainer() {
       )
     )
       setWinner(true);
+    // eslint-disable-next-line
   }, [isFinished, isCompleted]);
 
   useEffect(() => {

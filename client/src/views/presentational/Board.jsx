@@ -32,7 +32,7 @@ const Board = ({
                 handleUseNumber(currentNum, i)
                 setDuplicates(checkDuplicates({ index: i, board, currentNum }))
             }
-            else if (trash && deletable) handleDelete(i)
+            else if (trash && deletable && value) handleDelete(i)
             else if (pencil.annotate && mutable) handleAnnotate(i)
         }}
     >
