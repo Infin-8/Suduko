@@ -1,5 +1,5 @@
 import action_types from "./action.types"
-const { LOAD_CURRENT, RESET_CURRENT, SET_CURRENT, SHIFT_SELECTED, PUSH_SELECTED, ANNOTATE, DELETE_ANNOTATION, LOAD_SAVED } = action_types
+const { LOAD_CURRENT, RESET_CURRENT, SET_CURRENT, SHIFT_SELECTED, PUSH_SELECTED, ANNOTATE, DELETE_ANNOTATION, LOAD_SAVED, DELETE_ALL_ANNOTATIONS } = action_types
 
 const currentReducer = (state, action) => {
 
@@ -109,6 +109,23 @@ const currentReducer = (state, action) => {
                                 }
                             })
                             : item)
+                }
+            }
+
+        case DELETE_ALL_ANNOTATIONS:
+            return {
+                ...state,
+                mapped: {
+                    ...state.mapped,
+                    render: [...state.mapped.render]
+                        .map((item) => ({
+                            ...item,
+                            annotate : {
+                                ...item.annotate,
+                                render: false,
+                                values: []
+                            }
+                        }))
                 }
             }
 

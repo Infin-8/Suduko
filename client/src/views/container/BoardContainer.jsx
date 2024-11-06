@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import useNavListener from "../../util/backlistener";
 import { useParams } from "react-router-dom";
 import { useStore } from "../../store/Provider/Connect";
@@ -39,9 +39,8 @@ function BoardContainer() {
       },
     } = getState?.(),
     { _id, diff } = useParams(),
-    memoID = useMemo(() => _id, [_id]);
-
-  useNavListener();
+    memoID = useMemo(() => _id, [_id]),
+    callbackListener = useCallback(() => useNavListener, []);
 
   const isFinished = useMemo(
       () => compose(filterTruthy, mapString)(mapValues(render, false)).join(""),
@@ -82,6 +81,8 @@ function BoardContainer() {
       setHistory(JSON.parse(saved).mapped.history);
     }
 
+    callbackListener();
+
     // eslint-disable-next-line
   }, []);
 
@@ -114,7 +115,9 @@ function BoardContainer() {
   useEffect(() => {
     if (
       new RegExp(`^${isFinished}$`).test(isCompleted) ||
-      isValid(compose(mapValues, testValues)(render) ? mapValues(render, false) : [])
+      isValid(
+        compose(mapValues, testValues)(render) ? mapValues(render, false) : []
+      )
     )
       setWinner(true);
   }, [isFinished, isCompleted, render]);

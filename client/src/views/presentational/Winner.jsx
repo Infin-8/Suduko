@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import useNavListener from "../../util/backlistener";
 import { useNavigate, useParams } from "react-router-dom";
 import Requests from "../../util/requests";
 import styles from "../../util/styles";
@@ -10,8 +9,6 @@ const Winner = () => {
     nav = useNavigate(),
     { _id, diff } = useParams();
 
-  useNavListener();
-  
   useEffect(() => {
     let interval = setInterval(() => {
       nav(`/boards/${diff}`);
